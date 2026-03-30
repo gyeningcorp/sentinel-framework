@@ -65,15 +65,29 @@ Use this checklist to assess your organization's compliance with the Sentinel Fr
 
 ---
 
+## Pillar 6: Network Security Architecture
+- [ ] All internet-facing AI agents are isolated in a DMZ (separate network segment or VLAN)
+- [ ] No direct connections exist between internet-facing AI and internal databases
+- [ ] Egress filtering enforced — AI agents can only call pre-approved external endpoints
+- [ ] API gateway with auth, rate limiting, and logging sits between DMZ and internal zones
+- [ ] Content inspection / prompt injection detection on all external data entering AI systems
+- [ ] LAN AI (internal) and internet AI (DMZ) are on separate network segments
+- [ ] All inter-zone traffic is encrypted (mTLS)
+- [ ] Network flows logged to SIEM for anomaly detection
+
+**Score: ___ / 8**
+
+---
+
 ## Scoring
 
 | Score | Level | Status |
 |-------|-------|--------|
-| 0–10 | Level 0–1 | Not compliant |
-| 11–20 | Level 2 | Partially compliant |
-| 21–25 | Level 3 | Mostly compliant |
-| 26–29 | Level 4 | Compliant |
-| 30 | Level 4 | Fully Sentinel Compliant ✅ |
+| 0–12 | Level 0–1 | Not compliant |
+| 13–24 | Level 2 | Partially compliant |
+| 25–32 | Level 3 | Mostly compliant |
+| 33–37 | Level 4 | Compliant |
+| 38 | Level 4 | Fully Sentinel Compliant ✅ |
 
 ---
 

@@ -21,6 +21,7 @@ This is not a product. It is a standard — like OWASP for web security, or RFC 
 | 3 | [RAG vs. LAG](docs/03-rag-lag.md) | Memory for truth. Logs for drift. |
 | 4 | [Least Privilege Agency](docs/04-least-privilege-agency.md) | AI gets a badge, not a master key. |
 | 5 | [Tasks Over Jobs](docs/05-tasks-over-jobs.md) | Atomic actions. Not open mandates. |
+| 6 | [Network Security Architecture](docs/06-network-security.md) | Where your AI lives determines what it can touch. |
 
 ## Who Is This For?
 
