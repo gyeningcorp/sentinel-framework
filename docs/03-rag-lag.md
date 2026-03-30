@@ -18,6 +18,8 @@ Two tools solve two different problems:
 
 RAG is already widely understood: before generating, the agent retrieves relevant documents from a knowledge base to ground its output in verifiable facts.
 
+**Important caveat:** Research from Bloomberg, the University of Maryland, and Johns Hopkins University (2024) found that poorly implemented RAG can *increase* harmful outputs by up to 30x — because the retrieved context can bypass safety guardrails that would normally trigger refusals. RAG is not a safety shortcut. It is a precision tool that requires careful access controls, source validation, and output monitoring.
+
 In the Sentinel Framework, RAG has a governance role beyond just accuracy:
 
 **Environment State Verification**: Before any consequential action, the agent must retrieve and cite its current understanding of the environment. This creates a verifiable snapshot: *"At the moment of action, the AI believed X, based on documents Y and Z."*
@@ -39,6 +41,8 @@ Agent must cite all three before acting.
 
 ## LAG — Log-Augmented Governance
 ### Detecting Drift Before It Happens
+
+> **Original Framework Contribution** — LAG is a governance mechanism introduced by the Sentinel Framework (Christopher Gyening, 2026). It builds on established ML concepts of concept drift and trajectory monitoring, formalizing them into an operational kill-switch protocol for agentic AI sessions.
 
 LAG is the flight recorder. It monitors the **trajectory** of the AI's decision-making process across an entire session — not just individual outputs.
 

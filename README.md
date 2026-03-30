@@ -8,9 +8,18 @@
 
 ## What Is This?
 
-The Sentinel Framework is an open governance standard for organizations deploying AI agents. It defines five pillars of safe, accountable, and auditable agentic AI — moving from vague "AI safety" concepts to concrete, implementable architecture.
+The Sentinel Framework is an open governance standard for organizations deploying AI agents. It defines six pillars of safe, accountable, and auditable agentic AI — moving from vague "AI safety" concepts to concrete, implementable architecture.
 
 This is not a product. It is a standard — like OWASP for web security, or RFC for internet protocols.
+
+## Originality Statement
+
+Pillars 1, 4, 5, and 6 are grounded in established security and AI safety research (OWASP, NIST, Zero Trust, IEEE). Two pillars are **original governance frameworks** introduced by Sentinel:
+
+- **HITM (Human-In-The-Middle)** — extends the academic HITL/HOTL models with active mid-inference steering via Correction Vectors. Introduces the **Sentinel Engineer** as a formal professional role.
+- **LAG (Log-Augmented Governance)** — formalizes ML drift detection into an operational kill-switch protocol for agentic sessions.
+
+Both concepts are original contributions of Christopher Gyening / gyeningcorp, 2026.
 
 ## The Five Pillars
 

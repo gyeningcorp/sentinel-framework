@@ -1,13 +1,20 @@
 # Pillar 2: Human-In-The-Middle (HITM)
 ### Active Intervention, Not Passive Approval
 
+> **Original Framework Contribution** — HITM is a governance model introduced by the Sentinel Framework (Christopher Gyening, 2026). It extends and supersedes existing HITL/HOTL models with active, mid-inference human steering.
+
 ---
 
 ## The Problem
 
-"Human-in-the-loop" is a passive concept. It means a human reviews what the AI did — after the fact, or at the very end. That's not governance. That's a signature on a document you didn't write.
+The AI safety community has defined two oversight models:
 
-We need **Human-In-The-Middle (HITM)**: humans who intercept, correct, and steer the AI during the inference process — before high-stakes actions are taken.
+- **HITL (Human-in-the-loop):** Human approves or rejects AI output at defined checkpoints.
+- **HOTL (Human-on-the-loop):** Human monitors from above and intervenes by exception.
+
+Both are insufficient for agentic systems. HITL creates bottlenecks. HOTL creates blind spots. Neither gives the human **steering authority** — the ability to redirect the AI mid-course with semantic guidance, not just a yes/no gate.
+
+We need **Human-In-The-Middle (HITM)**: humans who intercept, correct, and steer the AI during the inference process — before high-stakes actions are taken. Not at the end. Not from above. *In the middle.*
 
 ---
 
@@ -41,14 +48,20 @@ That correction is injected into the context window before the agent continues.
 ## Why "In-The-Middle" Matters
 
 ```
-Traditional HITL:
+HITL (Human-in-the-loop):
 [AI generates] → [AI acts] → [Human reviews]
                                ↑ Too late.
 
-HITM:
+HOTL (Human-on-the-loop):
+[AI generates] → [AI acts] → [AI acts] → [Human notices]
+                                            ↑ Way too late.
+
+HITM (Human-in-the-middle) — Sentinel Framework:
 [AI generates] → [Human intercepts] → [Human corrects] → [AI acts]
                         ↑ Right here. This is the moment.
 ```
+
+HITM is not just a tighter HITL. It introduces a third response option — **Approve with Correction Vector** — that makes the human an active co-pilot, not just a gatekeeper.
 
 ---
 
@@ -95,6 +108,28 @@ async function requireHITM(action, context) {
 ## Executive Summary
 
 > Your CFO doesn't approve budgets after the money is spent. Don't approve AI actions after they've been taken. Put the human in the middle — not at the end.
+
+---
+
+---
+
+## The Sentinel Engineer
+
+HITM isn't just a technical protocol. It defines a **new professional role**.
+
+Every organization deploying AI agents at scale will need a **Sentinel Engineer** — the human who sits in the middle.
+
+| Responsibility | Description |
+|----------------|-------------|
+| Gate monitoring | Reviews pending HITM gates in real time |
+| Correction authoring | Writes precise Correction Vectors to steer agent outputs |
+| Drift response | Responds to LAG alerts before session termination |
+| Compliance ownership | Owns the organization's Sentinel score and audit records |
+| Incident response | Investigates and documents HITM denials and kill events |
+
+This role is distinct from "AI safety engineer" (which is research-focused) and "AI ops" (which is infrastructure-focused). The Sentinel Engineer is **operational governance** — the person accountable for what the AI does, in real time, every session.
+
+> *"Every pilot needs a co-pilot. Every AI agent needs a Sentinel Engineer."*
 
 ---
 
