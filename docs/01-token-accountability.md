@@ -85,6 +85,22 @@ await auditLog.write(sentinelLog);
 
 ---
 
+## Real-World Implementation: Tokenizer
+
+**[Tokenizer](https://github.com/gyeningcorp/tokenizer)** is a free, open-source Chrome/Edge extension built by the same team behind the Sentinel Framework. It implements Pillar 1 in the browser — giving you real-time token counts for every AI conversation before you send it.
+
+### What Tokenizer Does
+- 📊 **Live token counting** — see exactly how many tokens your prompt and conversation history will consume, before hitting Send
+- 🔢 **Conversation mode** — tracks running totals across System / User / Assistant turns
+- 🖥️ **Works everywhere** — Claude, ChatGPT, Gemini, any AI interface in your browser
+- 💻 **Desktop app** — standalone Windows app with local model support (Ollama, LM Studio, Jan, LocalAI)
+
+Tokenizer is the simplest entry point to Token Accountability. Before you can govern AI spend, you need to *see* it. Tokenizer makes it visible.
+
+**Install:** [Chrome Web Store](https://chrome.google.com/webstore) | [GitHub](https://github.com/gyeningcorp/tokenizer) | [Download for Windows](https://github.com/gyeningcorp/tokenizer/releases)
+
+---
+
 ## Executive Summary
 
 > Your AI has an expense report. Every decision costs something. Audit it the same way you audit financial spend — with line items, budgets, and alerts when something goes over.
