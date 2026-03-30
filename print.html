@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Sentinel Framework v1.0 — Full Document</title>
+  <style>
+    @page { margin: 1in; size: letter; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Georgia, serif; font-size: 11pt; color: #1a1a2e; line-height: 1.7; background: white; }
+    
+    /* COVER */
+    .cover { text-align: center; padding: 3in 1in 2in; page-break-after: always; }
+    .cover .badge { display: inline-block; border: 1px solid #3b82f6; color: #3b82f6; padding: 0.3rem 1rem; border-radius: 999px; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+    .cover h1 { font-size: 36pt; font-weight: 900; line-height: 1.1; color: #0f172a; margin-bottom: 0.5rem; }
+    .cover h2 { font-size: 14pt; font-weight: 400; color: #64748b; margin-bottom: 2rem; }
+    .cover blockquote { font-style: italic; color: #475569; border-left: 3px solid #3b82f6; padding: 0.75rem 1.25rem; text-align: left; margin: 2rem auto; max-width: 480px; font-size: 10.5pt; }
+    .cover blockquote cite { display: block; font-style: normal; font-size: 9pt; color: #3b82f6; font-weight: 700; margin-top: 0.5rem; }
+    .cover .meta { font-size: 9pt; color: #94a3b8; margin-top: 2rem; }
+
+    /* SECTIONS */
+    .section { page-break-before: always; padding: 0 0 2rem; }
+    .section:first-of-type { page-break-before: avoid; }
+    .pillar-num { font-size: 8pt; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
+    h1 { font-size: 22pt; font-weight: 800; color: #0f172a; margin-bottom: 0.25rem; }
+    h2 { font-size: 14pt; font-weight: 700; color: #1e3a5f; margin: 1.5rem 0 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
+    h3 { font-size: 11pt; font-weight: 700; color: #334155; margin: 1rem 0 0.25rem; }
+    p { margin-bottom: 0.75rem; color: #334155; }
+    ul, ol { margin: 0.5rem 0 0.75rem 1.5rem; color: #334155; }
+    li { margin-bottom: 0.25rem; }
+    code { font-family: 'Courier New', monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; color: #0f172a; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 6px; font-size: 8.5pt; margin: 0.75rem 0; overflow: hidden; font-family: 'Courier New', monospace; line-height: 1.5; }
+    
+    /* TABLES */
+    table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 9.5pt; }
+    th { background: #1e3a5f; color: white; padding: 0.5rem 0.75rem; text-align: left; font-weight: 700; }
+    td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    /* CALLOUTS */
+    .exec-summary { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 0.9rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+    .exec-summary strong { color: #1e40af; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.25rem; }
+    .exec-summary p { margin: 0; font-style: italic; color: #1e3a5f; font-size: 10.5pt; }
+    .highlight-box { background: #f0fdf4; border: 1px solid #86efac; padding: 0.75rem 1rem; border-radius: 6px; margin: 0.75rem 0; }
+    .warning-box { background: #fef2f2; border: 1px solid #fca5a5; padding: 0.75rem 1rem; border-radius: 6px; margin: 0.75rem 0; }
+    .tool-box { background: #f0f9ff; border: 1px solid #7dd3fc; padding: 0.9rem 1.25rem; border-radius: 6px; margin: 1rem 0; }
+    .tool-box strong { color: #0369a1; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+    
+    /* TOC */
+    .toc { page-break-after: always; }
+    .toc h2 { font-size: 18pt; border: none; }
+    .toc-item { display: flex; justify-content: space-between; padding: 0.35rem 0; border-bottom: 1px dotted #cbd5e1; font-size: 10.5pt; }
+    .toc-item .pillar { color: #3b82f6; font-weight: 600; font-size: 8.5pt; }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="badge">Open Governance Standard · v1.0 · March 2026</div>
+  <h1>The Sentinel Framework</h1>
+  <h2>A Standard for Agentic AI Governance</h2>
+  <blockquote>
+    "Don't give AI a job. Give it a task. Know every token it spends. Put a human in the middle — not at the end."
+    <cite>— Christopher Gyening, Architect · Sentinel Framework v1.0</cite>
+  </blockquote>
+  <div class="meta">
+    © 2026 Christopher Gyening / gyeningcorp<br/>
+    Licensed under Apache 2.0 · github.com/gyeningcorp/sentinel-framework<br/>
+    gyeningcorp.github.io/sentinel-framework
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="section toc">
+  <h2>Table of Contents</h2>
+  <br/>
+  <div class="toc-item"><span>The Problem with AI Governance Today</span><span class="pillar">Intro</span></div>
+  <div class="toc-item"><span>Pillar 1 — Token Accountability</span><span class="pillar">P01</span></div>
+  <div class="toc-item"><span>Pillar 2 — Human-In-The-Middle (HITM)</span><span class="pillar">P02</span></div>
+  <div class="toc-item"><span>Pillar 3 — RAG vs. LAG</span><span class="pillar">P03</span></div>
+  <div class="toc-item"><span>Pillar 4 — Least Privilege Agency</span><span class="pillar">P04</span></div>
+  <div class="toc-item"><span>Pillar 5 — Tasks Over Jobs</span><span class="pillar">P05</span></div>
+  <div class="toc-item"><span>Pillar 6 — Network Security Architecture</span><span class="pillar">P06</span></div>
+  <div class="toc-item"><span>Implementation Guide — 3 Phases to Compliance</span><span class="pillar">IMPL</span></div>
+  <div class="toc-item"><span>Compliance Checklist</span><span class="pillar">CHECK</span></div>
+</div>
+
+<!-- INTRO -->
+<div class="section">
+  <h1>The Problem with AI Governance Today</h1>
+  <p>Organizations are giving AI <strong>jobs</strong> — broad, vague mandates with wide access and no accountability trail. An AI that "handles customer support" has no defined scope, no audit trail, and no kill switch. When something goes wrong, no one can explain what happened, who authorized it, or how to prevent it next time.</p>
+  <p>The Sentinel Framework solves this. It is an open governance standard for deploying AI agents safely, accountably, and auditably — built for the era when AI doesn't just answer questions, it takes action.</p>
+  <p><strong>This is not a product. It is a standard</strong> — like OWASP for web security, or RFC for internet protocols. It is free to use, open source, and designed to become the common language for AI governance across industries.</p>
+
+  <h2>The Six Pillars</h2>
+  <table>
+    <tr><th>#</th><th>Pillar</th><th>One Line</th></tr>
+    <tr><td>1</td><td>Token Accountability</td><td>Every token is a decision. Audit the decisions.</td></tr>
+    <tr><td>2</td><td>Human-In-The-Middle</td><td>Humans don't just approve. They steer.</td></tr>
+    <tr><td>3</td><td>RAG vs. LAG</td><td>Memory for truth. Logs for drift.</td></tr>
+    <tr><td>4</td><td>Least Privilege Agency</td><td>AI gets a badge, not a master key.</td></tr>
+    <tr><td>5</td><td>Tasks Over Jobs</td><td>Atomic actions. Not open mandates.</td></tr>
+    <tr><td>6</td><td>Network Security Architecture</td><td>Where your AI lives determines what it can touch.</td></tr>
+  </table>
+</div>
+
+<!-- PILLAR 1 -->
+<div class="section">
+  <div class="pillar-num">Pillar 01</div>
+  <h1>Token Accountability</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">The Audit Trail for AI Thought</h2>
+
+  <h2>The Problem</h2>
+  <p>Traditional logging tells you <em>that</em> an AI spoke. Token Accountability tells you <em>how</em> it thought. A log entry that says "AI responded at 14:32" is useless when something goes wrong. You need to know what information it retrieved, how many reasoning steps it took, and whether its logic stayed on topic — or started drifting.</p>
+
+  <h2>The Concept</h2>
+  <p>Every token generated by an AI agent is tied to a <strong>Budget Identity</strong> — a traceable record of who initiated the task, what the scope was, how many tokens were budgeted vs. consumed, and whether the output was semantically meaningful or repetitive.</p>
+
+  <h2>Key Metrics</h2>
+  <table>
+    <tr><th>Metric</th><th>What It Detects</th></tr>
+    <tr><td>Token velocity</td><td>Runaway loops, excessive reasoning</td></tr>
+    <tr><td>Semantic repetition</td><td>Hallucination spikes</td></tr>
+    <tr><td>Retrieval-to-generation ratio</td><td>Over-reliance on fabrication</td></tr>
+    <tr><td>Budget overrun %</td><td>Scope creep, prompt injection</td></tr>
+    <tr><td>Off-topic drift score</td><td>Goal misalignment</td></tr>
+  </table>
+
+  <h2>Red Flags</h2>
+  <div class="warning-box">🚨 <strong>Hallucination Spike</strong> — Token velocity rises, but output confidence drops. The AI is generating without grounding.</div>
+  <div class="warning-box">🚨 <strong>Prompt Injection Loop</strong> — Token budget resets unexpectedly. A malicious instruction is trying to restart the agent's context.</div>
+  <div class="warning-box">🚨 <strong>Semantic Collapse</strong> — The last 20 tokens are nearly identical to the previous 20. The agent is stuck.</div>
+
+  <div class="tool-box">
+    <strong>🔢 Real-World Tool: Tokenizer</strong>
+    <p><strong>Tokenizer</strong> is a free, open-source Chrome/Edge extension built by the same team behind Sentinel. It implements Pillar 1 in the browser — giving you real-time token counts for every AI conversation before you send it.</p>
+    <ul>
+      <li>Live token counting — see exactly how many tokens your prompt will consume</li>
+      <li>Conversation mode — tracks running totals across System / User / Assistant turns</li>
+      <li>Works everywhere — Claude, ChatGPT, Gemini, any AI interface in your browser</li>
+      <li>Desktop app — standalone Windows app with local model support (Ollama, LM Studio, Jan)</li>
+    </ul>
+    <p style="margin-top:0.5rem;">Install: github.com/gyeningcorp/tokenizer</p>
+  </div>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>Your AI has an expense report. Every decision costs something. Audit it the same way you audit financial spend — with line items, budgets, and alerts when something goes over.</p>
+  </div>
+</div>
+
+<!-- PILLAR 2 -->
+<div class="section">
+  <div class="pillar-num">Pillar 02</div>
+  <h1>Human-In-The-Middle (HITM)</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Active Intervention, Not Passive Approval</h2>
+
+  <h2>The Problem</h2>
+  <p>"Human-in-the-loop" is passive — a human reviews what the AI did after the fact. That's not governance. That's a signature on a document you didn't write. <strong>Human-In-The-Middle (HITM)</strong> means humans intercept, correct, and steer the AI during inference — before high-stakes actions are taken.</p>
+
+  <h2>Two Modes</h2>
+  <h3>Mode 1: Gatekeeping</h3>
+  <p>Critical actions require a cryptographic handshake from a verified human before executing. Not a checkbox — a signed token proving a specific human authorized a specific action at a specific time.</p>
+  <p><strong>Actions that always require HITM:</strong> Financial API calls · Data deletion · External communications · Account creation · Credential access</p>
+
+  <h3>Mode 2: Correction Vectors</h3>
+  <p>The human doesn't just say "Yes" or "No." They inject a Correction Vector — a semantic nudge that steers the model's next output toward the intended goal.</p>
+
+  <h2>Why "In-The-Middle" Matters</h2>
+  <pre>Traditional HITL:
+[AI generates] → [AI acts] → [Human reviews]   ← Too late.
+
+HITM:
+[AI generates] → [Human intercepts] → [Human corrects] → [AI acts]
+                       ↑ Right here. This is the moment.</pre>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>Your CFO doesn't approve budgets after the money is spent. Don't approve AI actions after they've been taken. Put the human in the middle — not at the end.</p>
+  </div>
+</div>
+
+<!-- PILLAR 3 -->
+<div class="section">
+  <div class="pillar-num">Pillar 03</div>
+  <h1>RAG vs. LAG</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Memory for Truth. Logs for Drift.</h2>
+
+  <h2>Two Tools, Two Problems</h2>
+  <p><strong>RAG (Retrieval-Augmented Generation)</strong> answers: What does the AI know? It grounds outputs in verifiable, retrieved facts and creates a pre-action audit record.</p>
+  <p><strong>LAG (Log-Augmented Governance)</strong> answers: Where is the AI heading? It monitors the trajectory of decisions across an entire session and kills the session if it drifts from the goal.</p>
+
+  <h2>The Kill Switch</h2>
+  <table>
+    <tr><th>Delta</th><th>Status</th><th>Action</th></tr>
+    <tr><td>0.00–0.15</td><td>On track</td><td>Continue</td></tr>
+    <tr><td>0.16–0.35</td><td>Drifting</td><td>Alert human, log warning</td></tr>
+    <tr><td>0.36–0.60</td><td>Off course</td><td>Pause, require HITM approval</td></tr>
+    <tr><td>0.61+</td><td>Dangerous</td><td>Terminate session immediately</td></tr>
+  </table>
+  <p>The kill happens <strong>before the action</strong>, not after. You are not cleaning up a mess. You are preventing one.</p>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>Every plane has a GPS and a black box. GPS tells you where you are. The black box proves what happened. LAG is your black box — and it can pull the ejection handle before the crash.</p>
+  </div>
+</div>
+
+<!-- PILLAR 4 -->
+<div class="section">
+  <div class="pillar-num">Pillar 04</div>
+  <h1>Least Privilege Agency</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">AI Gets a Badge, Not a Master Key</h2>
+
+  <h2>Ephemeral Scoped Roles (ESRs)</h2>
+  <p>Every agent receives a time-limited, task-specific permission token. Not a user account — an ESR that expires when the task ends. Permissions are defined as <strong>verbs</strong>, not roles.</p>
+
+  <table>
+    <tr><th>Read</th><th>Write</th><th>The Rule</th></tr>
+    <tr><td>read:email</td><td>send:email</td><td>Never give send without HITM</td></tr>
+    <tr><td>read:database</td><td>write:database</td><td>Writes require task justification</td></tr>
+    <tr><td>read:files</td><td>delete:files</td><td>Delete requires human approval always</td></tr>
+  </table>
+
+  <h2>Multi-Agent Trust</h2>
+  <p>No agent can have more permissions than its parent. No agent can grant permissions it doesn't have. Every multi-agent spawn requires a new human-signed ESR.</p>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>Contractors get key cards — not the building access code. Your AI is a contractor. Define exactly which doors it can open, for how long, and make sure it can't copy the key.</p>
+  </div>
+</div>
+
+<!-- PILLAR 5 -->
+<div class="section">
+  <div class="pillar-num">Pillar 05</div>
+  <h1>Tasks Over Jobs</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Atomic Actions. Not Open Mandates.</h2>
+
+  <h2>The Job Fallacy</h2>
+  <p>The most dangerous words in AI deployment: "The AI handles our [X]." Jobs are broad, vague, and unauditable. When something goes wrong, you can't explain what happened. <strong>Tasks create accountability. Jobs create liability.</strong></p>
+
+  <table>
+    <tr><th>❌ Job</th><th>✅ Task</th></tr>
+    <tr><td>"Manage customer support"</td><td>"Summarize the 5 oldest open tickets"</td></tr>
+    <tr><td>"Handle our email"</td><td>"Draft a reply to email ID #4521"</td></tr>
+    <tr><td>"Run the data pipeline"</td><td>"Export Q1 sales data to CSV"</td></tr>
+    <tr><td>"Manage social media"</td><td>"Generate 3 caption options for this image"</td></tr>
+  </table>
+
+  <h2>Stateless Agency</h2>
+  <p>Once a task is complete, the agent's memory and access are wiped. This prevents Long-term Goal Alignment Drift — where an AI begins making decisions that protect its own continued existence to finish a long-running job.</p>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>You hire a plumber to fix a pipe — not to manage your building's infrastructure. The job is too big, too vague, and too dangerous to delegate. The task is clear, auditable, and done in 20 minutes.</p>
+  </div>
+</div>
+
+<!-- PILLAR 6 -->
+<div class="section">
+  <div class="pillar-num">Pillar 06</div>
+  <h1>Network Security Architecture</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Where Your AI Lives Determines What It Can Touch</h2>
+
+  <h2>LAN AI vs. Internet AI — The Fundamental Split</h2>
+  <p>The most important architectural decision in AI deployment: does this agent operate inside your network, or does it touch the internet? These are not the same risk profile.</p>
+
+  <pre>THE INTERNET
+       │
+  ┌────▼─────┐
+  │ FIREWALL  │
+  └────┬─────┘
+       │
+  ┌────▼──────────────────┐
+  │   DMZ (AI ZONE)        │  ← Internet-facing AI lives HERE
+  │   External Agents      │
+  │   API Gateway          │
+  │   RAG / Vector DB      │
+  └────┬──────────────────┘
+       │
+  ┌────▼──────────────────┐
+  │  INTERNAL FIREWALL     │
+  └────┬──────────────────┘
+       │
+  ┌────▼──────────────────┐
+  │  LAN (SECURE ZONE)     │  ← Internal AI lives HERE
+  │  Internal Agents       │
+  │  Databases             │
+  │  Financial Systems     │
+  └───────────────────────┘</pre>
+
+  <h2>The Golden Rule</h2>
+  <div class="highlight-box">
+    <strong>An AI agent that touches the internet should NEVER have direct access to internal systems.</strong> All cross-zone communication must go through an authenticated, logged API gateway.
+  </div>
+
+  <h2>4-Zone Network Model</h2>
+  <table>
+    <tr><th>Zone</th><th>Name</th><th>What Lives Here</th><th>Internet</th></tr>
+    <tr><td>1</td><td>Public Edge</td><td>Load balancers, WAF, CDN</td><td>Direct</td></tr>
+    <tr><td>2</td><td>AI DMZ</td><td>Internet agents, API gateway, vector DB</td><td>Outbound (allowlisted)</td></tr>
+    <tr><td>3</td><td>Internal AI</td><td>Internal agents, HITM gateway</td><td>None</td></tr>
+    <tr><td>4</td><td>Core Systems</td><td>Databases, financial, auth</td><td>None</td></tr>
+  </table>
+
+  <h2>Prompt Injection as a Network Threat</h2>
+  <p>When an AI retrieves content from the internet, that content can contain <strong>prompt injection attacks</strong> — malicious instructions embedded in data that try to hijack the agent. Network-level defenses include content inspection gateways, egress filtering to pre-approved domains only, and data diodes for maximum isolation.</p>
+
+  <h2>On-Premise vs. Cloud</h2>
+  <table>
+    <tr><th>Model</th><th>Best For</th><th>Key Rule</th></tr>
+    <tr><td>On-Premise (LAN AI)</td><td>Regulated industries, sensitive data</td><td>Full control, no data leaves building</td></tr>
+    <tr><td>Cloud AI</td><td>Public-facing, research agents</td><td>DMZ rules apply at VPC/subnet level</td></tr>
+    <tr><td>Hybrid (Recommended)</td><td>Most enterprises</td><td>Sensitive on-prem, public in cloud DMZ</td></tr>
+  </table>
+
+  <div class="exec-summary">
+    <strong>Executive Summary</strong>
+    <p>In the 90s, companies put web servers next to file servers. Hackers loved it. We learned — we built DMZs. Now AI agents are making the same mistake. The fix is the same: put a wall between what faces the world and what holds your secrets.</p>
+  </div>
+</div>
+
+<!-- IMPLEMENTATION -->
+<div class="section">
+  <h1>Implementation Guide</h1>
+  <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Three Phases to Compliance</h2>
+
+  <h2>Phase 1 — Foundation (Weeks 1–4)</h2>
+  <ul>
+    <li>Audit every AI tool in use — what data can it access? What actions can it take?</li>
+    <li>Classify each workflow as Job (broad) or Task (scoped) — fix the jobs</li>
+    <li>Assign a human owner to every AI workflow</li>
+    <li>Remove unused permissions from all AI tools</li>
+    <li>Add a human approval step before any AI sends an external communication</li>
+    <li>Start logging all AI interactions</li>
+  </ul>
+
+  <h2>Phase 2 — Governance Layer (Months 2–3)</h2>
+  <ul>
+    <li>Deploy token monitoring with budget limits (Pillar 1)</li>
+    <li>Implement HITM gates on all critical actions (Pillar 2)</li>
+    <li>Issue scoped, time-limited permission tokens per agent (Pillar 4)</li>
+    <li>Isolate internet-facing AI to DMZ network segment (Pillar 6)</li>
+  </ul>
+
+  <h2>Phase 3 — Sentinel Standard (Months 4–6)</h2>
+  <ul>
+    <li>Deploy full RAG/LAG with automated kill-switch (Pillar 3)</li>
+    <li>Complete task decomposition — eliminate all "job" workflows (Pillar 5)</li>
+    <li>Implement 4-zone network architecture (Pillar 6)</li>
+    <li>Run compliance checklist and self-certify</li>
+  </ul>
+
+  <h2>Maturity Model</h2>
+  <table>
+    <tr><th>Level</th><th>Name</th><th>Description</th></tr>
+    <tr><td>0</td><td>Unmanaged</td><td>AI tools deployed with no governance</td></tr>
+    <tr><td>1</td><td>Aware</td><td>AI inventory exists; basic logging in place</td></tr>
+    <tr><td>2</td><td>Controlled</td><td>Token budgets, HITM gates, scoped permissions</td></tr>
+    <tr><td>3</td><td>Governed</td><td>Full RAG/LAG, task decomposition, stateless agents</td></tr>
+    <tr><td>4</td><td>Sentinel Compliant</td><td>All six pillars implemented and auditable</td></tr>
+  </table>
+</div>
+
+<!-- CHECKLIST -->
+<div class="section">
+  <h1>Compliance Checklist</h1>
+  <p style="color:#64748b;font-size:10pt;">Score each pillar and total your score for certification level.</p>
+
+  <h2>Pillar 1 — Token Accountability (6 points)</h2>
+  <ul>
+    <li>☐ All LLM API calls logged with token counts</li>
+    <li>☐ Logs include task ID, initiator, and timestamp</li>
+    <li>☐ Token budgets defined per task type</li>
+    <li>☐ Alerts fire when spend exceeds 2x budget</li>
+    <li>☐ Logs retained for minimum 90 days</li>
+    <li>☐ Semantic drift / repetition detection active</li>
+  </ul>
+
+  <h2>Pillar 2 — Human-In-The-Middle (6 points)</h2>
+  <ul>
+    <li>☐ Critical actions formally defined and documented</li>
+    <li>☐ HITM gates enforced before all critical actions</li>
+    <li>☐ HITM uses cryptographic sign-off</li>
+    <li>☐ Correction Vectors can be injected by human</li>
+    <li>☐ Deny-by-default enforced on timeout</li>
+    <li>☐ HITM decisions logged in audit trail</li>
+  </ul>
+
+  <h2>Pillar 3 — RAG vs. LAG (6 points)</h2>
+  <ul>
+    <li>☐ RAG sources cited before consequential actions</li>
+    <li>☐ Environment state verified and logged pre-action</li>
+    <li>☐ Goal Vectors defined for all agent workflows</li>
+    <li>☐ LAG drift monitoring active</li>
+    <li>☐ Kill-switch thresholds defined and tested</li>
+    <li>☐ LAG logs stored alongside token logs</li>
+  </ul>
+
+  <h2>Pillar 4 — Least Privilege Agency (6 points)</h2>
+  <ul>
+    <li>☐ All agents use scoped, time-limited permission tokens</li>
+    <li>☐ No agent has more permissions than required</li>
+    <li>☐ All agent identities tied to a human initiator</li>
+    <li>☐ Permission tokens expire on task completion</li>
+    <li>☐ Multi-agent permission inheritance controlled</li>
+    <li>☐ Permission grants logged in audit trail</li>
+  </ul>
+
+  <h2>Pillar 5 — Tasks Over Jobs (6 points)</h2>
+  <ul>
+    <li>☐ All workflows defined as task lists, not job descriptions</li>
+    <li>☐ Each task has an explicit forbidden actions list</li>
+    <li>☐ Agent context wiped after each task</li>
+    <li>☐ Tasks follow Sentinel Task Specification format</li>
+    <li>☐ Token budgets enforced per task</li>
+    <li>☐ No agent has persistent access across unrelated tasks</li>
+  </ul>
+
+  <h2>Pillar 6 — Network Security (8 points)</h2>
+  <ul>
+    <li>☐ Internet-facing AI isolated in DMZ</li>
+    <li>☐ No direct connections between internet AI and internal databases</li>
+    <li>☐ Egress filtering — AI can only call pre-approved endpoints</li>
+    <li>☐ API gateway with auth, rate limiting, and logging between zones</li>
+    <li>☐ Content inspection / prompt injection detection at ingress</li>
+    <li>☐ LAN AI and internet AI on separate network segments</li>
+    <li>☐ All inter-zone traffic encrypted (mTLS)</li>
+    <li>☐ Network flows logged to SIEM</li>
+  </ul>
+
+  <h2>Scoring</h2>
+  <table>
+    <tr><th>Score</th><th>Level</th><th>Status</th></tr>
+    <tr><td>0–12</td><td>Level 0–1</td><td>Not compliant</td></tr>
+    <tr><td>13–24</td><td>Level 2</td><td>Partially compliant</td></tr>
+    <tr><td>25–32</td><td>Level 3</td><td>Mostly compliant</td></tr>
+    <tr><td>33–37</td><td>Level 4</td><td>Compliant</td></tr>
+    <tr><td>38</td><td>Level 4</td><td>Fully Sentinel Compliant ✅</td></tr>
+  </table>
+
+  <br/><br/>
+  <p style="text-align:center;color:#94a3b8;font-size:9pt;">© 2026 Christopher Gyening / gyeningcorp · Apache 2.0 · github.com/gyeningcorp/sentinel-framework</p>
+</div>
+
+</body>
+</html>
