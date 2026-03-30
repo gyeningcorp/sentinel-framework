@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Sentinel Framework — Agentic AI Governance Standard</title>
+  <meta name="description" content="An open standard for governing AI agents. Token accountability, human-in-the-middle, drift detection, least privilege, and task-based deployment." />
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --border: #1f2937;
+      --accent: #3b82f6;
+      --accent2: #6366f1;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --danger: #ef4444;
+      --success: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(10,14,26,0.95); backdrop-filter: blur(10px); z-index: 100; }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent); color: white; padding: 0.5rem 1.25rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero { max-width: 860px; margin: 0 auto; padding: 6rem 2rem 4rem; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: var(--accent); padding: 0.35rem 1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 1.5rem; }
+    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 2.5rem; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.2s; }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid var(--border); color: var(--text); padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-quote { margin-top: 3rem; padding: 1.25rem 2rem; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; text-align: left; font-style: italic; color: var(--muted); }
+    .hero-quote cite { display: block; margin-top: 0.5rem; font-style: normal; font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+
+    /* PROBLEM */
+    .problem { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; text-align: center; }
+    .problem h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; }
+    .problem p { color: var(--muted); max-width: 680px; margin: 0 auto; font-size: 1.05rem; }
+    .problem-highlight { color: var(--danger); font-weight: 600; }
+
+    /* PILLARS */
+    .pillars { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label { text-align: center; color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 1rem; }
+    .section-sub { text-align: center; color: var(--muted); max-width: 560px; margin: 0 auto 3.5rem; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .pillar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: border-color 0.2s, transform 0.2s; }
+    .pillar-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .pillar-num { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .pillar-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .pillar-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .pillar-quote { border-top: 1px solid var(--border); padding-top: 1rem; font-size: 0.85rem; color: var(--text); font-style: italic; }
+    .pillar-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 1rem; }
+    .pillar-link:hover { text-decoration: underline; }
+
+    /* HOW IT WORKS */
+    .how { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 2rem; }
+    .how-inner { max-width: 860px; margin: 0 auto; }
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 3rem; }
+    .step { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .step-num { min-width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .step-content h4 { font-weight: 700; margin-bottom: 0.25rem; }
+    .step-content p { color: var(--muted); font-size: 0.95rem; }
+
+    /* FOR WHO */
+    .forwhom { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .audience-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+    .audience-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .audience-card h4 { font-weight: 700; margin-bottom: 0.5rem; }
+    .audience-card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* CTA */
+    .cta { text-align: center; padding: 6rem 2rem; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(99,102,241,0.08)); border-top: 1px solid var(--border); }
+    .cta h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+    .cta p { color: var(--muted); max-width: 520px; margin: 0 auto 2.5rem; }
+    .badge-code { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; font-family: monospace; font-size: 0.85rem; color: var(--muted); display: inline-block; margin-top: 2rem; text-align: left; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">⚔️ <span>Sentinel</span> Framework</div>
+    <div class="nav-links">
+      <a href="#pillars">The Standard</a>
+      <a href="#implement">Implement</a>
+      <a href="#who">Who It's For</a>
+      <a href="https://github.com/gyeningcorp/sentinel-framework" target="_blank">GitHub</a>
+    </div>
+    <a href="https://github.com/gyeningcorp/sentinel-framework" class="nav-cta" target="_blank">Read the Standard →</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">Open Governance Standard · v1.0</div>
+    <h1>Govern Your AI Agents<br/><span>Before They Govern You</span></h1>
+    <p>The Sentinel Framework is an open standard for deploying AI agents safely, accountably, and auditably — built for the era when AI doesn't just answer questions, it takes action.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/gyeningcorp/sentinel-framework" class="btn-primary" target="_blank">Read the Standard</a>
+      <a href="docs/compliance-checklist.md" class="btn-secondary">Compliance Checklist</a>
+    </div>
+    <div class="hero-quote">
+      "Don't give AI a job. Give it a task. Know every token it spends. Put a human in the middle — not at the end."
+      <cite>— Christopher Gyening, Architect · Sentinel Framework v1.0</cite>
+    </div>
+  </section>
+
+  <section class="problem">
+    <h2>The Problem with AI Today</h2>
+    <p>Organizations are giving AI <span class="problem-highlight">jobs</span> — broad, vague mandates with wide access and no accountability trail. When something goes wrong, no one can explain what happened, who authorized it, or how to prevent it next time. Sentinel fixes this.</p>
+  </section>
+
+  <section class="pillars" id="pillars">
+    <div class="section-label">The Five Pillars</div>
+    <h2 class="section-title">A Defense-in-Depth Architecture for Agentic AI</h2>
+    <p class="section-sub">Each pillar addresses a specific failure mode. Together, they form a complete governance layer.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 01</div>
+        <h3>Token Accountability</h3>
+        <p>Every token generated is tied to a Budget Identity — giving you a real-time audit trail of how the AI thought, not just what it said.</p>
+        <div class="pillar-quote">"Your AI has an expense report. Audit it."</div>
+        <a class="pillar-link" href="docs/01-token-accountability.md">Read more →</a>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 02</div>
+        <h3>Human-In-The-Middle</h3>
+        <p>Move beyond passive "human-in-the-loop" to active intervention. Humans intercept, correct, and steer agents before high-stakes actions execute.</p>
+        <div class="pillar-quote">"Your CFO doesn't approve budgets after the money's spent."</div>
+        <a class="pillar-link" href="docs/02-human-in-the-middle.md">Read more →</a>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 03</div>
+        <h3>RAG vs. LAG</h3>
+        <p>RAG grounds the AI in truth. LAG monitors its trajectory over time. When drift exceeds a threshold, the session is killed before the action phase.</p>
+        <div class="pillar-quote">"GPS + black box. One navigates. One proves what happened."</div>
+        <a class="pillar-link" href="docs/03-rag-lag.md">Read more →</a>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 04</div>
+        <h3>Least Privilege Agency</h3>
+        <p>Every agent receives an Ephemeral Scoped Role — a time-limited, task-specific permission token. It expires when the task ends. No lingering access.</p>
+        <div class="pillar-quote">"Contractors get key cards, not the building access code."</div>
+        <a class="pillar-link" href="docs/04-least-privilege-agency.md">Read more →</a>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 05</div>
+        <h3>Tasks Over Jobs</h3>
+        <p>AI shouldn't have jobs — it should have tasks. Atomic, scoped, stateless. Once complete, memory is wiped. No long-term goal drift possible.</p>
+        <div class="pillar-quote">"You hire a plumber to fix a pipe. Not to run your building."</div>
+        <a class="pillar-link" href="docs/05-tasks-over-jobs.md">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="implement">
+    <div class="how-inner">
+      <div class="section-label">Implementation</div>
+      <h2 class="section-title">Three Phases to Compliance</h2>
+      <p class="section-sub">You don't need to implement everything at once. The Sentinel maturity model lets you progress at your own pace.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Phase 1 — Foundation (Weeks 1–4)</h4>
+            <p>Audit your AI tools. Classify Jobs vs. Tasks. Remove unused permissions. Add basic logging. Define your first task specifications.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Phase 2 — Governance Layer (Months 2–3)</h4>
+            <p>Deploy token monitoring, HITM gates, and scoped permissions. Every agent action is logged. High-risk actions require human sign-off.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Phase 3 — Sentinel Standard (Months 4–6)</h4>
+            <p>Full RAG/LAG drift monitoring, stateless agent architecture, and compliance certification. You can answer any question about any AI decision in the last 90 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="forwhom" id="who">
+    <div class="section-label">Who It's For</div>
+    <h2 class="section-title">Built for Everyone Who Deploys AI</h2>
+    <p class="section-sub">Whether you're a board member, an engineer, or a compliance lead — Sentinel gives you a common language.</p>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">🏢</div>
+        <h4>Executives</h4>
+        <p>Understand what your AI agents are doing, what they have access to, and who is accountable.</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">💻</div>
+        <h4>Engineers</h4>
+        <p>A concrete architecture for building agentic systems that are auditable by design.</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">⚖️</div>
+        <h4>Legal & Compliance</h4>
+        <p>A framework your team can audit, cite, and enforce — not a vague policy document.</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">🔬</div>
+        <h4>Researchers</h4>
+        <p>An open, versioned standard for studying AI governance in production environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Start Building Sentinel-Compliant AI</h2>
+    <p>The standard is open source. Read it, use it, build on it — just give credit where it's due.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/gyeningcorp/sentinel-framework" class="btn-primary" target="_blank">View on GitHub</a>
+      <a href="docs/compliance-checklist.md" class="btn-secondary">Take the Checklist</a>
+    </div>
+    <div class="badge-code">
+      [![Sentinel Compliant](https://img.shields.io/badge/Sentinel-Compliant-blue)](https://github.com/gyeningcorp/sentinel-framework)
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Christopher Gyening / <a href="https://github.com/gyeningcorp" target="_blank">gyeningcorp</a> · The Sentinel Framework is licensed under <a href="https://github.com/gyeningcorp/sentinel-framework/blob/main/LICENSE" target="_blank">Apache 2.0</a> · <a href="https://github.com/gyeningcorp/sentinel-framework" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
