@@ -131,16 +131,26 @@
   <div class="warning-box">🚨 <strong>Prompt Injection Loop</strong> — Token budget resets unexpectedly. A malicious instruction is trying to restart the agent's context.</div>
   <div class="warning-box">🚨 <strong>Semantic Collapse</strong> — The last 20 tokens are nearly identical to the previous 20. The agent is stuck.</div>
 
+  <h2>Start Here: Tokenizer</h2>
+  <p>Before you can govern AI token spend, you need to <em>see</em> it. <strong>Tokenizer</strong> is the official implementation tool for Pillar 1 — and the easiest first step any organization can take toward Sentinel compliance.</p>
   <div class="tool-box">
-    <strong>🔢 Real-World Tool: Tokenizer</strong>
-    <p><strong>Tokenizer</strong> is a free, open-source Chrome/Edge extension built by the same team behind Sentinel. It implements Pillar 1 in the browser — giving you real-time token counts for every AI conversation before you send it.</p>
+    <strong>🔢 Tokenizer — Free Tool · Available Now</strong>
+    <p>Tokenizer is a free, open-source Chrome/Edge extension (and Windows desktop app) built by the Sentinel team. It gives you real-time token visibility across every AI platform you use — no API key required, no backend needed.</p>
+    <table style="margin-top:0.75rem;">
+      <tr><th>Feature</th><th>What It Does</th></tr>
+      <tr><td>Live Token Count</td><td>See exactly how many tokens your prompt will consume before hitting Send</td></tr>
+      <tr><td>Conversation Mode</td><td>Tracks System / User / Assistant turns with running totals</td></tr>
+      <tr><td>Works Everywhere</td><td>Claude, ChatGPT, Gemini, and any AI interface in your browser</td></tr>
+      <tr><td>Local Model Support</td><td>Desktop app connects to Ollama, LM Studio, Jan, LocalAI</td></tr>
+      <tr><td>No Account Needed</td><td>Runs entirely in-browser. Nothing is sent to any server.</td></tr>
+    </table>
+    <p style="margin-top:0.9rem;"><strong>How to get it:</strong></p>
     <ul>
-      <li>Live token counting — see exactly how many tokens your prompt will consume</li>
-      <li>Conversation mode — tracks running totals across System / User / Assistant turns</li>
-      <li>Works everywhere — Claude, ChatGPT, Gemini, any AI interface in your browser</li>
-      <li>Desktop app — standalone Windows app with local model support (Ollama, LM Studio, Jan)</li>
+      <li>Chrome/Edge Extension: Chrome Web Store → search "Tokenizer"</li>
+      <li>Windows Desktop App: github.com/gyeningcorp/tokenizer/releases</li>
+      <li>Source Code: github.com/gyeningcorp/tokenizer</li>
     </ul>
-    <p style="margin-top:0.5rem;">Install: github.com/gyeningcorp/tokenizer</p>
+    <p style="margin-top:0.75rem; font-style:italic; color:#0369a1;">Tokenizer is Step 1 of your Sentinel implementation. If you do nothing else today, install this. It costs nothing and takes 30 seconds.</p>
   </div>
 
   <div class="exec-summary">
