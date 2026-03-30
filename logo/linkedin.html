@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #0a0e1a; }
+  .container { position: relative; width: 1200px; height: 630px; }
+  .bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75; }
+  .overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.6) 0%, rgba(10,14,26,0.2) 50%, rgba(10,14,26,0.7) 100%); }
+  .content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 48px 60px; }
+  .badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); color: #93c5fd; padding: 6px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Segoe UI', Arial, sans-serif; margin-bottom: 14px; width: fit-content; }
+  .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 72px; font-weight: 900; color: white; line-height: 1.0; letter-spacing: -2px; margin-bottom: 8px; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+  .subtitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 22px; font-weight: 400; color: #93c5fd; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 24px; }
+  .tagline { font-family: 'Segoe UI', Arial, sans-serif; font-size: 17px; color: rgba(255,255,255,0.7); font-style: italic; }
+  .attribution { position: absolute; top: 40px; right: 50px; text-align: right; }
+  .attribution .name { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; color: rgba(255,255,255,0.6); }
+  .attribution .url { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #3b82f6; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <img class="bg-img" src="sentinel-handshake-2.webp" />
+  <div class="overlay"></div>
+  <div class="attribution">
+    <div class="name">Christopher Gyening</div>
+    <div class="url">gyeningcorp.github.io/sentinel-framework</div>
+  </div>
+  <div class="content">
+    <div class="badge">⚔️ Open Governance Standard · v1.0</div>
+    <div class="title">SENTINEL<br/>FRAMEWORK</div>
+    <div class="subtitle">Agentic AI Governance</div>
+    <div class="tagline">"Don't give AI a job. Give it a task. Know every token it spends."</div>
+  </div>
+</div>
+</body>
+</html>
