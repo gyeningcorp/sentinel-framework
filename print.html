@@ -165,8 +165,11 @@
   <h1>Human-In-The-Middle (HITM)</h1>
   <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Active Intervention, Not Passive Approval</h2>
 
+  <div class="highlight-box"><strong>Original Framework Contribution</strong> — HITM is a governance model introduced by the Sentinel Framework (Christopher Gyening, 2026). It extends and supersedes existing HITL/HOTL models with active, mid-inference human steering.</div>
+
   <h2>The Problem</h2>
-  <p>"Human-in-the-loop" is passive — a human reviews what the AI did after the fact. That's not governance. That's a signature on a document you didn't write. <strong>Human-In-The-Middle (HITM)</strong> means humans intercept, correct, and steer the AI during inference — before high-stakes actions are taken.</p>
+  <p>The AI safety community has two oversight models: <strong>HITL (Human-in-the-loop)</strong> — human approves at checkpoints — and <strong>HOTL (Human-on-the-loop)</strong> — human monitors from above and intervenes by exception. Both are insufficient for agentic systems. HITL creates bottlenecks. HOTL creates blind spots. Neither gives the human steering authority mid-course.</p>
+  <p><strong>Human-In-The-Middle (HITM)</strong> means humans intercept, correct, and steer the AI during inference — before high-stakes actions are taken. Not at the end. Not from above. In the middle.</p>
 
   <h2>Two Modes</h2>
   <h3>Mode 1: Gatekeeping</h3>
@@ -177,12 +180,22 @@
   <p>The human doesn't just say "Yes" or "No." They inject a Correction Vector — a semantic nudge that steers the model's next output toward the intended goal.</p>
 
   <h2>Why "In-The-Middle" Matters</h2>
-  <pre>Traditional HITL:
-[AI generates] → [AI acts] → [Human reviews]   ← Too late.
+  <pre>HITL:  [AI generates] → [AI acts] → [Human reviews]       ← Too late.
+HOTL:  [AI generates] → [AI acts] → [AI acts] → [Human notices] ← Way too late.
+HITM:  [AI generates] → [Human intercepts] → [Human corrects] → [AI acts]
+                               ↑ Right here. This is the moment.</pre>
+  <p>HITM introduces a third response option — <strong>Approve with Correction Vector</strong> — making the human an active co-pilot, not just a gatekeeper.</p>
 
-HITM:
-[AI generates] → [Human intercepts] → [Human corrects] → [AI acts]
-                       ↑ Right here. This is the moment.</pre>
+  <h2>The Sentinel Engineer</h2>
+  <p>HITM defines a new professional role. Every organization deploying AI agents at scale will need a <strong>Sentinel Engineer</strong> — the human who sits in the middle.</p>
+  <table>
+    <tr><th>Responsibility</th><th>Description</th></tr>
+    <tr><td>Gate monitoring</td><td>Reviews pending HITM gates in real time</td></tr>
+    <tr><td>Correction authoring</td><td>Writes Correction Vectors to steer agent outputs</td></tr>
+    <tr><td>Drift response</td><td>Responds to LAG alerts before session termination</td></tr>
+    <tr><td>Compliance ownership</td><td>Owns the organization's Sentinel score and audit records</td></tr>
+    <tr><td>Incident response</td><td>Investigates and documents HITM denials and kill events</td></tr>
+  </table>
 
   <div class="exec-summary">
     <strong>Executive Summary</strong>
@@ -196,8 +209,10 @@ HITM:
   <h1>RAG vs. LAG</h1>
   <h2 style="border:none;font-size:12pt;color:#64748b;margin-top:0;">Memory for Truth. Logs for Drift.</h2>
 
+  <div class="highlight-box"><strong>Original Framework Contribution</strong> — LAG (Log-Augmented Governance) is introduced by the Sentinel Framework (Christopher Gyening, 2026), formalizing ML drift detection into an operational kill-switch protocol for agentic AI sessions.</div>
+
   <h2>Two Tools, Two Problems</h2>
-  <p><strong>RAG (Retrieval-Augmented Generation)</strong> answers: What does the AI know? It grounds outputs in verifiable, retrieved facts and creates a pre-action audit record.</p>
+  <p><strong>RAG (Retrieval-Augmented Generation)</strong> answers: What does the AI know? It grounds outputs in verifiable, retrieved facts and creates a pre-action audit record. <em>Important caveat:</em> Research from Bloomberg, University of Maryland, and Johns Hopkins (2024) found poorly implemented RAG can increase harmful outputs up to 30x — RAG requires careful access controls and output monitoring, not just retrieval.</p>
   <p><strong>LAG (Log-Augmented Governance)</strong> answers: Where is the AI heading? It monitors the trajectory of decisions across an entire session and kills the session if it drifts from the goal.</p>
 
   <h2>The Kill Switch</h2>
